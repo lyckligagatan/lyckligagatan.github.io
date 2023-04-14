@@ -1,0 +1,99 @@
+<h1 id="a-simple-introduction-to-git">A simple introduction to git</h1>
+<h2 id="tldr">TLDR</h2>
+<p>To setup a new repository, you go to the folder you want to manage and:</p>
+<pre><code>git init</code></pre>
+<p>Then use your favourite editor and create a file .gitignore, which lists all files that you want git to ignore. This could be a long list depending on your environment, but usually you have content like:</p>
+<pre><code>venv/ 
+__pycache__/
+.idea/</code></pre>
+<p>There is a nice template at https://github.com/github/gitignore/blob/main/Python.gitignore where you can pick what is suitable for you</p>
+<p>When git is setup correctly, this is what you do every day:</p>
+<pre><code>git pull    # get latest changes from repository
+&lt;do some work&gt;
+git status  # to see what you have done
+git diff    # if you want to inspect the diff to see in detail what you have done
+git add .   # &quot;stages&quot; all files into a commit (a set of changes).
+            # you could also add files one by one if you like!
+git commit -m &quot;My comment about the commit&quot;  # add a useful comment
+git push    # will push the changes to a remote location (probably __github__)</code></pre>
+<p>repeat</p>
+<p>if you already know what you have done, you can skip the git status and git diff.</p>
+<p>hint: when I do minor stuff or are in a hurry, I enter the commit comment “wip” for “work-in-progress”. But the better you write the comment, the better for all future readers.</p>
+<p>If you desperately need a GUI (I sometimes do, but not often) I can recommend GIT KRAKEN, a very nice GUI client for git.</p>
+<h2 id="overview">Overview</h2>
+<p>Git is a distributed source code manager (SCM). The difference against other SCMs that are server-based, is that there is <strong>no server</strong> involved! All nodes are equal, and you can clone a repository from any other node you have access to.</p>
+<p>Basically you can have two nodes that push and pull updates between them.</p>
+<p>However its more normal to have one node as the “super-node”. Ususally one uses <strong>GitHub</strong> or <strong>GitLab</strong> for this ‘always-on’ service.</p>
+<h3 id="commits">Commits</h3>
+<p>The smallest atom in the git universe is a “commit”. A commit consists of <strong>a set of changes to files</strong>.</p>
+<p>The history of a file in a git repo is therefore a list of commits that eventually ends up as the current file state.</p>
+<p>Every commit is linked back and forth. It can be a good mental picture to visualize a linked list of commits.</p>
+<h2 id="installation">Installation</h2>
+<pre><code>sudo apt install git</code></pre>
+<h2 id="first-use">First use</h2>
+<p>This instruction assumes there is a folder ./myproject in my home directory.</p>
+<p>There I have one file app.py and have also created a virtual environment. I have also created a requirement.txt using pip.</p>
+<pre><code>pip freeze &gt; requirements.txt</code></pre>
+<p>This folder now contains the following:</p>
+<pre><code>&gt;ll
+total 12
+drwxrwxr-x  3 peter peter 4096 Mar 23 08:54 ./
+drwxr-xr-x 89 peter peter 4096 Mar 23 08:54 ../
+-rw-rw-r--  1 peter peter    0 Mar 23 08:54 app.py
+-rw-rw-r--  1 peter peter   78 Mar 23 08:55 requirements.txt
+drwxrwxr-x  5 peter peter 4096 Mar 23 08:54 venv/</code></pre>
+<blockquote>
+<p>Initialize git for this folder</p>
+</blockquote>
+<pre><code>git init</code></pre>
+<blockquote>
+<p>A folder .git is now created</p>
+</blockquote>
+<pre><code>&gt;ll
+total 20
+drwxrwxr-x  4 peter peter 4096 Mar 23 10:02 ./
+drwxr-xr-x 89 peter peter 4096 Mar 23 08:54 ../
+-rw-rw-r--  1 peter peter    0 Mar 23 08:54 app.py
+drwxrwxr-x  7 peter peter 4096 Mar 23 10:02 .git/
+-rw-rw-r--  1 peter peter   78 Mar 23 08:55 requirements.txt
+drwxrwxr-x  5 peter peter 4096 Mar 23 08:54 venv/</code></pre>
+<p>You can issue a status command whenever you want.</p>
+<pre><code>&gt;git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+    app.py
+    requirements.txt
+    venv/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<p>Next step is to add a <strong>.gitignore</strong> file, since we dont want everything to be versioned</p>
+<p>You can create this file yourself by:</p>
+<ol type="1">
+<li>do a git status</li>
+<li>See if any unwanted files would be staged, else continue</li>
+<li>Add that unwanted folder/file/path to .gitignore</li>
+<li>goto 1)</li>
+</ol>
+<p>You could also download a prefrabricated .gitignore files, or use gitignore.io to create one.</p>
+<h2 id="workflow">Workflow</h2>
+<p>The general workflow is:</p>
+<p>work area –&gt; add to staging area –&gt; commit –&gt; push to remote repository</p>
+<ul>
+<li>Work area is your normal set of files</li>
+<li>You add single files or “all” (using .) to say “these files will be part of the commit”</li>
+<li>You can do the “git add” as many times as you like</li>
+<li>You do git commit -m “My message”</li>
+</ul>
+<p>Use “git status” often to check the state.</p>
+<h2 id="reversing">Reversing</h2>
+<p>If you make a mistake, it is easy to take a step back.</p>
+<p><strong>However, it is also easy to make a complete mess out of git, so in the beginning, keep a local copy of your source files too!</strong></p>
+<h2 id="un-staging-a-file">Un-staging a file</h2>
+<p>If you accidentally have “staged” a file, maybe using “git add .” and see that you have staged all files in the venv/ subdirectory, you can unstage them by:</p>
+<pre><code>git reset &lt;file&gt;</code></pre>
+<p>If you want to unstage ALL files, do:</p>
+<pre><code>git reset</code></pre>
