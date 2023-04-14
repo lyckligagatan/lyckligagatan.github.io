@@ -141,9 +141,13 @@ You could also download a prefrabricated .gitignore files, or use gitignore.io t
 
 ## Workflow
 
-The general workflow is:
+The general workflow in a GIT-enabled project is:
 
-work area  --> add to staging area --> commit  --> push to remote repository
+1. Edit files normally
+2. Add to staging area by "git add"
+3. Check progress: "git status"
+4. Commit the changed files by "git commit"
+5. Push to remote repository by "git push"
 
 * Work area is your normal set of files
 * You add single files or "all" (using .) to say "these files will be part of the commit"
@@ -153,6 +157,8 @@ work area  --> add to staging area --> commit  --> push to remote repository
 Use "git status" often to check the state.
 
 Remember that a **commit** is a set of files. You cant extract ONE file from the set, but have to consider the set as a unit.
+
+When correctly setup, you should not have to enter username/password anywhere.
 
 
 ## Reversing
@@ -175,9 +181,15 @@ If you want to unstage ALL files, do:
 git reset
 ```
 
-## Un-committing a file
+## Un-committing a file/set of files
 
 If you have staged and committed (but not pushed) it is a little more tricky to get out of the situation.
 
+If this happens, contact me!
 
+## Un-pushing a file/commit
+
+If you pushed the commit, it is very tricky to undo (but not impossible).
+
+If this happens, contact me!
 

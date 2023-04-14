@@ -89,8 +89,14 @@
   </ol>
   <p>You could also download a prefrabricated .gitignore files, or use gitignore.io to create one.</p>
   <h2 id="workflow">Workflow</h2>
-  <p>The general workflow is:</p>
-  <p>work area –&gt; add to staging area –&gt; commit –&gt; push to remote repository</p>
+  <p>The general workflow in a GIT-enabled project is:</p>
+  <ol type="1">
+  <li>Edit files normally</li>
+  <li>Add to staging area by “git add”</li>
+  <li>Check progress: “git status”</li>
+  <li>Commit the changed files by “git commit”</li>
+  <li>Push to remote repository by “git push”</li>
+  </ol>
   <ul>
   <li>Work area is your normal set of files</li>
   <li>You add single files or “all” (using .) to say “these files will be part of the commit”</li>
@@ -99,6 +105,7 @@
   </ul>
   <p>Use “git status” often to check the state.</p>
   <p>Remember that a <strong>commit</strong> is a set of files. You cant extract ONE file from the set, but have to consider the set as a unit.</p>
+  <p>When correctly setup, you should not have to enter username/password anywhere.</p>
   <h2 id="reversing">Reversing</h2>
   <p>If you make a mistake, it is easy to take a step back.</p>
   <p><strong>However, it is also easy to make a complete mess out of git, so in the beginning, keep a local copy of your source files too!</strong></p>
@@ -107,8 +114,12 @@
   <pre><code>git reset &lt;file&gt;</code></pre>
   <p>If you want to unstage ALL files, do:</p>
   <pre><code>git reset</code></pre>
-  <h2 id="un-committing-a-file">Un-committing a file</h2>
+  <h2 id="un-committing-a-fileset-of-files">Un-committing a file/set of files</h2>
   <p>If you have staged and committed (but not pushed) it is a little more tricky to get out of the situation.</p>
+  <p>If this happens, contact me!</p>
+  <h2 id="un-pushing-a-filecommit">Un-pushing a file/commit</h2>
+  <p>If you pushed the commit, it is very tricky to undo (but not impossible).</p>
+  <p>If this happens, contact me!</p>
   </div>
 </body>
 </html>
