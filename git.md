@@ -1,7 +1,7 @@
 # A simple introduction to git
 
 
-## TLDR
+## The short version
 
 To setup a new repository, you go to the folder you want to manage and:
 
@@ -9,8 +9,7 @@ To setup a new repository, you go to the folder you want to manage and:
 git init
 ```
 
-Then use your favourite editor and create a file .gitignore, which lists all files
-that you want git to ignore. This could be a long list depending on your environment, but usually you have content like:
+Then use your favourite editor and create a file .gitignore, which lists all files that you want git to ignore. This could be a long list depending on your environment, but usually you have content like:
 
 ```
 venv/ 
@@ -18,14 +17,14 @@ __pycache__/
 .idea/
 ```
 
-There is a nice template at https://github.com/github/gitignore/blob/main/Python.gitignore where you can pick what is suitable for you
+There is a nice template at [Python.gitignore](`https://github.com/github/gitignore/blob/main/Python.gitignore`) where you can pick what is suitable for you. [gitignore.io](https://gitignore.io) is also a good reference.
 
 
 When git is setup correctly, this is what you do every day:
 
 ```
 git pull    # get latest changes from repository
-<do some work>
+**do some work**
 git status  # to see what you have done
 git diff    # if you want to inspect the diff to see in detail what you have done
 git add .   # "stages" all files into a commit (a set of changes).
@@ -34,9 +33,7 @@ git commit -m "My comment about the commit"  # add a useful comment
 git push    # will push the changes to a remote location (probably __github__)
 ```
 
-repeat
-
-if you already know what you have done, you can skip the git status and git diff.
+if you already know what changes you have done, you can skip the git status and git diff.
 
 hint: when I do minor stuff or are in a hurry, I enter the commit comment "wip" for "work-in-progress". But the better you write the comment, the better for all future readers.
 
@@ -47,7 +44,7 @@ If you desperately need a GUI (I sometimes do, but not often) I can recommend GI
 
 
 
-## Overview
+## The long version
 
 Git is a distributed source code manager (SCM). The difference against other SCMs that are server-based, is that there is __no server__ involved!  All nodes are equal, and you can clone a repository from any other node you have access to.
 
@@ -155,6 +152,9 @@ work area  --> add to staging area --> commit  --> push to remote repository
 
 Use "git status" often to check the state.
 
+Remember that a **commit** is a set of files. You cant extract ONE file from the set, but have to consider the set as a unit.
+
+
 ## Reversing
 
 If you make a mistake, it is easy to take a step back.
@@ -174,5 +174,10 @@ If you want to unstage ALL files, do:
 ```
 git reset
 ```
+
+## Un-committing a file
+
+If you have staged and committed (but not pushed) it is a little more tricky to get out of the situation.
+
 
 
